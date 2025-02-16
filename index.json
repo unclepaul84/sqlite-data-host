@@ -24,6 +24,12 @@
                 {
                     "title": "Executives",
                     "query": "SELECT * FROM executives;"
+                },
+                 {
+                    "title": "Offices",
+                    "query": "SELECT * FROM offices WHERE legislator_id = ${id};",
+                    "parent": "Executives",
+                    "templated": true
                 }
             ]
         },
