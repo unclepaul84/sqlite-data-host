@@ -3,19 +3,28 @@
         {
             "title": "Data compare New vs Legacy 2025-02-15",
             "db_url": "/sqlite-data-host/tradeCompare_2025-02-15.sqlite",
-            "dashboard_items_tempate": "trades"
+            "dashboard_items_tempate": "compare"
         },
         {
             "title": "Data compare New vs Legacy 2025-02-16",
             "db_url": "/sqlite-data-host/tradeCompare_2025-02-15.sqlite",
-            "dashboard_items_tempate": "trades"
+            "dashboard_items_tempate": "compare"
    
         },
         {
             "title": "Legislators",
             "db_url": "/sqlite-data-host/legislators.db",
             "dashboard_items_tempate": "legislators"
+        },
+        {
+            "title": "legislator_compare_2025-02-15",
+            "db_url": "/sqlite-data-host/legislator_compare_2025-02-15.sqlite",
+            "dashboard_items_tempate": "compare"
         }
+
+
+
+       
     ],
     "dashboard_templates": [
         {
@@ -34,7 +43,7 @@
             ]
         },
         {
-            "name": "trades",
+            "name": "compare",
             "dashboard_items": [
                 {
                     "title": "Compare summary",
