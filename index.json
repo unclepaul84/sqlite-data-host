@@ -22,8 +22,8 @@
             "name": "legislators",
             "dashboard_items": [
                 {
-                    "title": "Executives",
-                    "query": "SELECT * FROM executives;"
+                    "title": "Legislators",
+                    "query": "SELECT * FROM legislators;"
                 },
                  {
                     "title": "Offices",
