@@ -37,7 +37,7 @@
                  {
                     "title": "Offices",
                     "query": "SELECT * FROM offices WHERE legislator_id = '${id}';",
-                    "parent": "Executives",
+                    "parent": "Legislators",
                     "templated": true
                 }
             ]
