@@ -10,9 +10,23 @@
             "db_url": "/sqlite-data-host/tradeCompare_2025-02-15.sqlite",
             "dashboard_items_tempate": "trades"
    
+        },
+        {
+            "title": "Legislators",
+            "db_url": "/sqlite-data-host/legislators.db",
+            "dashboard_items_tempate": "legislators"
         }
     ],
     "dashboard_templates": [
+        {
+            "name": "legislators",
+            "dashboard_items": [
+                {
+                    "title": "Executives",
+                    "query": "SELECT * FROM executives;"
+                }
+            ]
+        },
         {
             "name": "trades",
             "dashboard_items": [
