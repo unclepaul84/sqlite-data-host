@@ -1,0 +1,38 @@
+{
+    "datasets": [
+        {
+            "title": "Data compare New vs Legacy 2025-02-15",
+            "db_url": "/data/tradeCompare_2025-02-15.sqlite",
+            "dashboard_items_tempate": "trades"
+        },
+        {
+            "title": "Data compare New vs Legacy 2025-02-16",
+            "db_url": "/data/tradeCompare_2025-02-15.sqlite",
+            "dashboard_items_tempate": "trades"
+   
+        }
+    ],
+    "dashboard_templates": [
+        {
+            "name": "trades",
+            "dashboard_items": [
+                {
+                    "title": "Compare summary",
+                    "query": "SELECT * FROM entity_compare_results;"
+                },
+                {
+                    "title": "${entity} Compare field summary",
+                    "query": "SELECT * FROM ${entity}_compare_field_summary;",
+                    "parent": "Compare summary",
+                    "templated": true
+                },
+                {
+                    "title": "${entity} compare summary",
+                    "query": "SELECT * FROM ${entity}_compare",
+                    "parent": "Compare summary",
+                    "templated": true
+                }
+            ]
+        }
+    ]
+}
