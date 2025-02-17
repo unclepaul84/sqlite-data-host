@@ -16,15 +16,30 @@
             "dashboard_items_tempate": "legislators"
         }
     ],
-    "dashboard_templates": [
+       "dashboard_templates": [
         {
             "name": "legislators",
             "dashboard_items": [
              
                 {
                     "title": "Top 10 Legislators by Office Count",
-                    "query": "WITH CTE AS (select * from legislators l INNER JOIN offices o on o.legislator_id = l.id) select name,  count(legislator_id) from CTE GROUP BY name ORDER BY 2 DESC LIMIT 10;"
+                    "query": "WITH CTE AS (select * from legislators l INNER JOIN offices o on o.legislator_id = l.id) select id, name,  count(legislator_id) as offce_count from CTE GROUP BY id, name ORDER BY 3 DESC LIMIT 10;"
                 },
+                
+                {
+                    "title": "${name} offices by ZIP",
+                    "type": "chart",
+                    "chartType": "bar",
+                    "query": "SELECT zip, count(*) as count FROM offices WHERE legislator_id = '${id}' group by zip;",
+                    "templated": true,
+                    "parent": "Top 10 Legislators by Office Count",
+                    "options": {
+                        "xField": "zip",
+                        "yField": "count"
+                      
+                    }
+                },
+
                 {
                     "title": "Chart",
                     "type": "chart",
