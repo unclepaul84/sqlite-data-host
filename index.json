@@ -20,16 +20,7 @@
         {
             "name": "legislators",
             "dashboard_items": [
-                {
-                    "title": "Legislators",
-                    "query": "SELECT * FROM legislators"
-                },
-                {
-                    "title": "Offices",
-                    "query": "SELECT * FROM offices WHERE legislator_id = '${id}';",
-                    "parent": "Legislators",
-                    "templated": true
-                },
+            
                 {
                     "title": "Top 10 Legislators by Office Count",
                     "query": "WITH CTE AS (select * from legislators l INNER JOIN offices o on o.legislator_id = l.id) select name,  count(legislator_id) from CTE GROUP BY name ORDER BY 2 DESC LIMIT 10;"
@@ -80,6 +71,16 @@
                         "yField": "count"
                        
                     }
+                },
+                {
+                    "title": "Legislators",
+                    "query": "SELECT * FROM legislators"
+                },
+                {
+                    "title": "Offices",
+                    "query": "SELECT * FROM offices WHERE legislator_id = '${id}';",
+                    "parent": "Legislators",
+                    "templated": true
                 }
             ]
         },
