@@ -2,17 +2,17 @@
     "datasets": [
         {
             "title": "Data compare New vs Legacy 2025-02-15",
-            "db_url": "/data/tradeCompare_2025-02-15.sqlite",
+            "db_url": "/sqlite-data-host/tradeCompare_2025-02-15.sqlite",
             "dashboard_items_tempate": "trades"
         },
         {
             "title": "Data compare New vs Legacy 2025-02-16",
-            "db_url": "/data/tradeCompare_2025-02-15.sqlite",
+            "db_url": "/sqlite-data-host/tradeCompare_2025-02-15.sqlite",
             "dashboard_items_tempate": "trades"
         },
         {
             "title": "Legislators",
-            "db_url": "/data/legislators.db",
+            "db_url": "/sqlite-data-host/legislators.db",
             "dashboard_items_tempate": "legislators"
         }
     ],
