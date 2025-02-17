@@ -16,14 +16,20 @@
             "dashboard_items_tempate": "legislators"
         }
     ],
-       "dashboard_templates": [
+      "dashboard_templates": [
         {
             "name": "legislators",
             "dashboard_items": [
              
                 {
                     "title": "Top 10 Legislators by Office Count",
-                    "query": "WITH CTE AS (select * from legislators l INNER JOIN offices o on o.legislator_id = l.id) select id, name,  count(legislator_id) as offce_count from CTE GROUP BY id, name ORDER BY 3 DESC LIMIT 10;"
+                    "query": "WITH CTE AS (select * from legislators l INNER JOIN offices o on o.legislator_id = l.id) select id, name,  count(legislator_id) as offce_count from CTE GROUP BY id, name ORDER BY 3 DESC LIMIT 10;",     
+                    "grid_row_menus":[
+                        {
+                            "label": "Search google",
+                            "url": "https://www.google.com/search?q=${name}"
+                        }
+                    ]
                 },
                 
                 {
@@ -95,7 +101,14 @@
                     "title": "Offices",
                     "query": "SELECT * FROM offices WHERE legislator_id = '${id}';",
                     "parent": "Legislators",
-                    "templated": true
+                    "templated": true,
+
+                    "grid_row_menus":[
+                        {
+                            "label": "Search google maps",
+                            "url": "http://maps.google.com/?q=${address},${city},${state}"
+                        }
+                    ]
                 },
                 {
                     "title": "${name} offices by state",
