@@ -2,29 +2,19 @@
     "datasets": [
         {
             "title": "Data compare New vs Legacy 2025-02-15",
-            "db_url": "/sqlite-data-host/tradeCompare_2025-02-15.sqlite",
-            "dashboard_items_tempate": "compare"
+            "db_url": "/data/tradeCompare_2025-02-15.sqlite",
+            "dashboard_items_tempate": "trades"
         },
         {
             "title": "Data compare New vs Legacy 2025-02-16",
-            "db_url": "/sqlite-data-host/tradeCompare_2025-02-15.sqlite",
-            "dashboard_items_tempate": "compare"
-   
+            "db_url": "/data/tradeCompare_2025-02-15.sqlite",
+            "dashboard_items_tempate": "trades"
         },
         {
             "title": "Legislators",
-            "db_url": "/sqlite-data-host/legislators.db",
+            "db_url": "/data/legislators.db",
             "dashboard_items_tempate": "legislators"
-        },
-        {
-            "title": "legislator_compare_2025-02-15",
-            "db_url": "/sqlite-data-host/legislator_compare_2025-02-15.sqlite",
-            "dashboard_items_tempate": "compare"
         }
-
-
-
-       
     ],
     "dashboard_templates": [
         {
@@ -32,18 +22,69 @@
             "dashboard_items": [
                 {
                     "title": "Legislators",
-                    "query": "SELECT * FROM legislators;"
+                    "query": "SELECT * FROM legislators"
                 },
-                 {
+                {
                     "title": "Offices",
                     "query": "SELECT * FROM offices WHERE legislator_id = '${id}';",
                     "parent": "Legislators",
                     "templated": true
+                },
+                {
+                    "title": "Top 10 Legislators by Office Count",
+                    "query": "WITH CTE AS (select * from legislators l INNER JOIN offices o on o.legislator_id = l.id) select name,  count(legislator_id) from CTE GROUP BY name ORDER BY 2 DESC LIMIT 10;"
+                },
+                {
+                    "title": "Chart",
+                    "type": "chart",
+                    "chartType": "bar",
+                    "query": "WITH CTE AS (select * from legislators l INNER JOIN offices o on o.legislator_id = l.id) select name,  count(legislator_id) as count from CTE GROUP BY name ORDER BY 2 DESC LIMIT 20;",
+                    "options": {
+                        "xField": "name",
+                        "yField": "count"
+                      
+                    }
+                },
+                
+                {
+                    "title": "Chart 1",
+                    "type": "chart",
+                    "chartType": "pie",
+                    "query": "WITH CTE AS (select * from legislators l INNER JOIN offices o on o.legislator_id = l.id) select name,  count(legislator_id) as count from CTE GROUP BY name ORDER BY 2 DESC LIMIT 20;",
+                    "options": {
+                        "xField": "name",
+                        "yField": "count"
+                        
+                    }
+                },
+                
+                
+                {
+                    "title": "Chart 3",
+                    "type": "chart",
+                    "chartType": "doughnut",
+                    "query": "WITH CTE AS (select * from legislators l INNER JOIN offices o on o.legislator_id = l.id) select name,  count(legislator_id) as count from CTE GROUP BY name ORDER BY 2 DESC LIMIT 20;",
+                    "options": {
+                        "xField": "name",
+                        "yField": "count"
+                        
+                    }
+                },
+                {
+                    "title": "Chart 2",
+                    "type": "chart",
+                    "chartType": "line",
+                    "query": "WITH CTE AS (select * from legislators l INNER JOIN offices o on o.legislator_id = l.id) select name,  count(legislator_id) as count from CTE GROUP BY name ORDER BY 2 DESC LIMIT 20;",
+                    "options": {
+                        "xField": "name",
+                        "yField": "count"
+                       
+                    }
                 }
             ]
         },
         {
-            "name": "compare",
+            "name": "trades",
             "dashboard_items": [
                 {
                     "title": "Compare summary",
