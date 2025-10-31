@@ -21,7 +21,20 @@
         {
             "name": "legislators",
             "dashboard_items": [
-             
+                 {
+                      "type": "tiles",
+                      "title": "Office Count KPIs",
+                      "config": {
+                        "tiles": [
+                          {
+                            "name": "Has_Office",
+                            "query": "WITH CTE AS (select * from legislators l INNER JOIN offices o on o.legislator_id = l.id) select count(DISTINCT legislator_id) as offce_count from CTE;",
+                            "description": "Legislators with at least one office",
+                            "color": "#4CAF50"
+                          }
+                        ]
+                  }
+                },
                 {
                     "title": "Top 10 Legislators by Office Count",
                     "query": "WITH CTE AS (select * from legislators l INNER JOIN offices o on o.legislator_id = l.id) select id, name,  count(legislator_id) as offce_count from CTE GROUP BY id, name ORDER BY 3 DESC LIMIT 10;",     
@@ -163,4 +176,5 @@
             ]
         }
     ]
+
 }
